@@ -27,33 +27,33 @@ namespace library{
             }
         }
 
-        public Book(string title, string owner, bool isCheckedOut, string author, int pageNum, Guid id){
+        public Book(string title, Guid barrower, bool isCheckedOut, string author, int pageNum, Guid id){
             this.title = title;
-            this.owner = owner;
+            this.barrower = barrower;
             this.isCheckedOut = isCheckedOut;
             authors.Add(author);
             this.pageNum = pageNum;
             this.id = id; 
         }
-        public Book(string title, string owner, bool isCheckedOut, string author, int pageNum){
+        public Book(string title, Guid barrower, bool isCheckedOut, string author, int pageNum){
             this.title = title;
-            this.owner = owner;
+            this.barrower = barrower;
             this.isCheckedOut = isCheckedOut;
             authors.Add(author);
             this.pageNum = pageNum;
             id = Guid.NewGuid(); 
         }
-        public Book(string title, string owner, bool isCheckedOut, List<string> authors, int pageNum, Guid id){
+        public Book(string title, Guid barrower, bool isCheckedOut, List<string> authors, int pageNum, Guid id){
             this.title = title;
-            this.owner = owner;
+            this.barrower = barrower;
             this.isCheckedOut = isCheckedOut;
             this.authors = authors;
             this.pageNum = pageNum;
             this.id = id; 
         }
-        public Book(string title, string owner, bool isCheckedOut, List<string> authors, int pageNum){
+        public Book(string title, Guid barrower, bool isCheckedOut, List<string> authors, int pageNum){
             this.title = title;
-            this.owner = owner;
+            this.barrower = barrower;
             this.isCheckedOut = isCheckedOut;
             this.authors = authors;
             this.pageNum = pageNum;

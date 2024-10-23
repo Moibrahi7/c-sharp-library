@@ -7,7 +7,7 @@ namespace library{
 
         protected bool isCheckedOut = false;
 
-        protected string owner = "";
+        protected Guid barrower;
 
         protected Guid id;
 
@@ -28,12 +28,12 @@ namespace library{
             }
         }
 
-        public string Owner{
+        public Guid Barrower{
             set{
-                owner = value;
+                barrower = value;
             }
             get{
-                return owner;
+                return barrower;
             }
         }
 
@@ -42,9 +42,14 @@ namespace library{
                 return id;
             }
         }
-        public void checkOut(string owner){
-            this.isCheckedOut = true;
-            Console.WriteLine(this.title + " was checked out by " + owner);
+        public void checkOut(Guid id){
+            isCheckedOut = true;
+            barrower = id;
+            Console.WriteLine(this.title + " was checked out by " + barrower);
+        }
+        public void returnItem(){
+            isCheckedOut = false;
+            barrower = Guid.Empty; 
         }
     }
 }
