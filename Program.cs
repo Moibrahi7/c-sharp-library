@@ -10,9 +10,8 @@ public class Program
     MediaItem item = new Book("Biogrophy of John book", author, 3890);
     Console.WriteLine(item.Title);
     Console.WriteLine("Who is checking out " + item.Title + "?");
-    string user = (string) Console.ReadLine();
-
-    item.checkOut(user);
+    Guid id = Guid.NewGuid();
+    item.checkOut(id);
 
     }
 
