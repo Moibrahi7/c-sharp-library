@@ -72,7 +72,17 @@ namespace library{
                 Console.WriteLine("Item is already checked out");
                 return;
             }
+            item.checkOut(id);
             checkedOutBooks.Add(item);
+        }
+        public void returnItem(MediaItem item){
+            if(checkedOutBooks.Contains(item)){
+                checkedOutBooks.Remove(item);
+                item.returnItem();
+            }
+            else{
+                Console.WriteLine("the item is not with this guest");
+            }
         }
     }
 }
