@@ -32,9 +32,6 @@ namespace library{
             }
         }
         public List<MediaItem> CheckedOutBooks{
-            set{
-                checkedOutBooks = value;
-            }
             get{
                 return checkedOutBooks;
             }
@@ -70,5 +67,12 @@ namespace library{
             this.password = password;
         }
 
+        public void checkOutItem(MediaItem item){
+            if(checkedOutBooks.Contains(item)){
+                Console.WriteLine("Item is already checked out");
+                return;
+            }
+            checkedOutBooks.Add(item);
+        }
     }
 }
