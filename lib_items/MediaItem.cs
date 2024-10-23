@@ -9,6 +9,8 @@ namespace library{
 
         protected string owner = "";
 
+        protected Guid id;
+
          public string Title{
             set{
                 title = value;
@@ -35,6 +37,11 @@ namespace library{
             }
         }
 
+        public Guid Id{
+            get{
+                return id;
+            }
+        }
         public void checkOut(string owner){
             this.isCheckedOut = true;
             Console.WriteLine(this.title + " was checked out by " + owner);
