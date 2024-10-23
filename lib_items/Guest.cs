@@ -4,17 +4,44 @@ using System.Collections.Generic;
 namespace library{
     class Guest {
         
-        private string name;
+        protected string name;
+        private Guid id;
+        protected string email;
+        protected string password;
+        private List<MediaItem> checkedOutBooks = new List<MediaItem>();
 
-        Guid id;
+        public string Name{
+            set{
+                name = value;
+            }
+            get{
+                return name;
+            }
+        }
+        public Guid Id{
+            get{
+                return id;
+            }
+        }
+        public string Email{
+            set{
+                email = value;
+            }
+            get{
+                return email;
+            }
+        }
+        public List<MediaItem> CheckedOutBooks{
+            set{
+                checkedOutBooks = value;
+            }
+            get{
+                return checkedOutBooks;
+            }
+        }
 
-        private string email;
-
-        private string password;
-
-        List<MediaItem> checkedOutBooks = new List<MediaItem>();
-
-
+        protected Guest (){  
+        }
         public Guest (string name, Guid id, string email, string password, List<MediaItem> checkedOutBooks){
             this.name = name;
             this.id = id;
@@ -25,7 +52,7 @@ namespace library{
 
         public Guest (string name, string email, string password, List<MediaItem> checkedOutBooks){
             this.name = name;
-            this.id = Guid.NewGuid();
+            id = Guid.NewGuid();
             this.email = email;
             this.password = password;
             this.checkedOutBooks = checkedOutBooks;
@@ -38,7 +65,7 @@ namespace library{
         }
         public Guest (string name, string email, string password){
             this.name = name;
-            this.id = Guid.NewGuid();
+            id = Guid.NewGuid();
             this.email = email;
             this.password = password;
         }
