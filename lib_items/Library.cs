@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using libraryException;
 
 namespace library{
     class Library{
-        
         private string id;
         private List<Librarian> librarians = new List<Librarian>();
         // Possibly dont need this list due to  the use of the dictionary 
@@ -41,6 +41,7 @@ namespace library{
         public Library(string id){
             this.id = id;
         }
+        // 13 lines of code
         public void AddMediaItem(MediaItem item){
             if(item.IsCheckedOut){
                 mediaItemsById.Add(item.Id, item);
@@ -55,6 +56,7 @@ namespace library{
                 mediaItemsById.Add(item.Id, item);
             }
         }
+        // 8 lines of code
         public void addGuest(Guest guest){
             if(guestById.ContainsValue(guest)){
                 Console.WriteLine("This guest is already in the database");
@@ -63,7 +65,8 @@ namespace library{
             checkedOutBooksByGuest.Add(guest, guest.CheckedOutBooks);
             guestById.Add(guest.Id, guest);
         }
-        public void checkOutItem(Librarian librarian, Guest guest, MediaItem item){
+        // 10 lines of code
+        public void checkOutItem(Librarian librarian, Guest guest, MediaItem item){ 
             if(librarians.Contains(librarian)){
                 if(item.IsCheckedOut){
                     Console.WriteLine("This item is already checked out");
@@ -74,6 +77,7 @@ namespace library{
                 checkedOutBooksByGuest[guest].Add(item);
             }
         }
+        // 10 lines of code
         public void returnItem(Guest guest, MediaItem item){
             if(checkedOutItems.Contains(item.Id) && checkedOutBooksByGuest[guest].Contains(item)){
                 guest.returnItem(item);
@@ -82,6 +86,19 @@ namespace library{
                 return;
             }
             Console.WriteLine("This item is not checked out or is not checked out by this guest");
+        }
+        // 3 lines of code
+        public MediaItem findItem(Guid id){
+            return mediaItemsById[id];
+        }
+        public Guest findGuest(Librarian librarian, Guid guestId){
+            if(librarians.Contains(librarian)){
+                throw new LibrarianNotFoundException("This Librarian is not registered with this library");
+            }
+            if(guestById.ContainsKey(guestId)){
+                return guestById[guestId];
+            }
+            throw new GuestNotFoundException("This guest is not registered in with this library");
         }
     }
 }

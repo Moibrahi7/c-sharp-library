@@ -42,11 +42,36 @@ namespace library{
                 return id;
             }
         }
+
+        protected MediaItem(string title, Guid barrower, bool isCheckedOut, Guid id){
+            this.title = title;
+            this.barrower = barrower;
+            this.isCheckedOut = isCheckedOut;
+            this.id = id;
+        } 
+        protected MediaItem(string title, Guid barrower, bool isCheckedOut){
+            this.title = title;
+            this.barrower = barrower;
+            this.isCheckedOut = isCheckedOut;
+            id = Guid.NewGuid();
+        }
+        protected MediaItem(string title, Guid id){
+            this.title = title;
+            this.id = id;
+        } 
+        protected MediaItem(string title){
+            this.title = title;
+            id = Guid.NewGuid();
+        } 
+
+
+        // 5 lines of code
         public void checkOut(Guid id){
             isCheckedOut = true;
             barrower = id;
             Console.WriteLine(this.title + " was checked out by " + barrower);
         }
+        // 4 lines of code
         public void returnItem(){
             isCheckedOut = false;
             barrower = Guid.Empty; 

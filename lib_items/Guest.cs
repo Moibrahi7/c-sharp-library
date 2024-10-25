@@ -67,6 +67,7 @@ namespace library{
             this.password = password;
         }
 
+        // 7 lines of code
         public void checkOutItem(MediaItem item){
             if(checkedOutBooks.Contains(item)){
                 Console.WriteLine("Item is already checked out");
@@ -75,6 +76,7 @@ namespace library{
             item.checkOut(id);
             checkedOutBooks.Add(item);
         }
+        // 9 lines of code
         public void returnItem(MediaItem item){
             if(checkedOutBooks.Contains(item)){
                 checkedOutBooks.Remove(item);
