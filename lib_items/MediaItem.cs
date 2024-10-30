@@ -76,5 +76,10 @@ namespace library{
             isCheckedOut = false;
             barrower = Guid.Empty; 
         }
+
+        public override string ToString()
+        {
+            return "-Item title: " + title + " | ID: " + id;
+        }
     }
 }
