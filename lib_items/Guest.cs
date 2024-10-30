@@ -8,7 +8,7 @@ namespace library{
         private Guid id;
         protected string email;
         protected string password;
-        private List<MediaItem> checkedOutBooks = new List<MediaItem>();
+        private  HashSet<MediaItem> checkedOutBooks = new  HashSet<MediaItem>();
 
         public string Name{
             set{
@@ -31,15 +31,12 @@ namespace library{
                 return email;
             }
         }
-        public List<MediaItem> CheckedOutBooks{
+        public  HashSet<MediaItem> CheckedOutBooks{
             get{
                 return checkedOutBooks;
             }
         }
-
-        protected Guest (){  
-        }
-        public Guest (string name, Guid id, string email, string password, List<MediaItem> checkedOutBooks){
+        public Guest (string name, Guid id, string email, string password,  HashSet<MediaItem> checkedOutBooks){
             this.name = name;
             this.id = id;
             this.email = email;
@@ -47,14 +44,14 @@ namespace library{
             this.checkedOutBooks = checkedOutBooks;
         }
 
-        public Guest (string name, string email, string password, List<MediaItem> checkedOutBooks){
+        public Guest (string name, string email, string password,  HashSet<MediaItem> checkedOutBooks){
             this.name = name;
             id = Guid.NewGuid();
             this.email = email;
             this.password = password;
             this.checkedOutBooks = checkedOutBooks;
         }
-        public Guest (string name, Guid id, string email, string password){
+        public Guest (string name,  string email, string password, Guid id){
             this.name = name;
             this.id = id;
             this.email = email;
@@ -85,6 +82,18 @@ namespace library{
             else{
                 Console.WriteLine("the item is not with this guest");
             }
+        }
+        // 8 Lines of code
+        public void changePassword(string oldPassword, string newPassword){
+            if(oldPassword == password){
+                this.password = newPassword;
+            }
+            else{
+                Console.WriteLine("Incorrect password was entered");
+            }
+        }
+        public bool checkPassword(string pass){
+            return pass == password;
         }
     }
 }
