@@ -1,7 +1,7 @@
 using System;
 
 namespace library{
-    class Librarian : Guest{
+    public class Librarian : Guest{
         private int employeeId;
 
         public Librarian (string name, string email, string password, int employeeId) 

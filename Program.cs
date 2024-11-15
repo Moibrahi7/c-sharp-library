@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
+using libraryDataLoader;
 
 namespace library;
 
-public class Program
-{
+public static class Program{
+        public static Librarian librarian = new Librarian("Rachel", "Rachel@email.com", "12345Books", 1);
+        public static Library lib = new Library("1", librarian);
 
     public static void Main(string[] args){
         
         List<Book> books = new List<Book>();
-        Librarian librarian = new Librarian("Rachel", "Rachel@email.com", "12345Books", 1);
-        Library lib = new Library("1", librarian);
 
-        books.Add(new Book("John's Book", "John Book", 34));
-        books.Add(new Book("John's New Book", "John Book", 35));
+        // books.Add(new Book("John's Book", "John Book", 34));
+        // books.Add(new Book("John's New Book", "John Book", 35));
         books.Add(new Book("John's Newer Book", "John Book", 36));
         books.Add(new Book("John's Newest Book", "John Book", 37));
 
@@ -29,6 +30,8 @@ public class Program
         Guest guest1 = new Guest(name, email, password);
         Guest currGuest = guest1;
         lib.addGuest(guest2);
+        DataLoader dat = new DataLoader();
+        dat.loadData("lib_items/resources/libData.json");
         Console.WriteLine("Welcome to the C# Library!");
         while(!exit){
             
@@ -64,7 +67,6 @@ public class Program
                 Console.WriteLine("3: Look at checked out items");
                 Console.WriteLine("4: Check out a item");
                 Console.WriteLine("5: Return checked out item");
-
             }
             else{
                 Console.WriteLine("3: Check out a item");

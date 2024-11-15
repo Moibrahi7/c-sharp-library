@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using libraryException;
 
 namespace library{
-    class Library{
+    public class Library{
         private string id;
         private List<Librarian> librarians = new List<Librarian>();
         // Possibly dont need this list due to  the use of the dictionary 

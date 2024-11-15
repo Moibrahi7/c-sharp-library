@@ -1,7 +1,7 @@
 
 
 namespace library{
-    class MediaItem{
+    public class MediaItem{
 
         protected string title; 
 
@@ -10,6 +10,7 @@ namespace library{
         protected Guid barrower;
 
         protected Guid id;
+
 
          public string Title{
             set{
@@ -43,33 +44,28 @@ namespace library{
             }
         }
 
-        protected MediaItem(string title, Guid barrower, bool isCheckedOut, Guid id){
-            this.title = title;
-            this.barrower = barrower;
-            this.isCheckedOut = isCheckedOut;
+        public MediaItem(string title, string barrower, Guid id){
+            this.title = title;        
             this.id = id;
-        } 
-        protected MediaItem(string title, Guid barrower, bool isCheckedOut){
-            this.title = title;
-            this.barrower = barrower;
-            this.isCheckedOut = isCheckedOut;
-            id = Guid.NewGuid();
+            if(barrower != ""){
+                this.barrower = Program.lib.findGuest(Program.librarian, new Guid(barrower)).Id;
+                isCheckedOut = true;
+            }
         }
-        protected MediaItem(string title, Guid id){
+        public MediaItem(string title, Guid id){
             this.title = title;
             this.id = id;
         } 
-        protected MediaItem(string title){
+        public MediaItem(string title){
             this.title = title;
             id = Guid.NewGuid();
         } 
-
 
         // 5 lines of code
         public void checkOut(Guid id){
             isCheckedOut = true;
             barrower = id;
-            Console.WriteLine(this.title + " was checked out by " + barrower);
+            Console.WriteLine(title + " was checked out by " + Program.lib.findGuest(Program.librarian, barrower).Name);
         }
         // 4 lines of code
         public void returnItem(){
@@ -79,7 +75,7 @@ namespace library{
 
         public override string ToString()
         {
-            return "-Item title: " + title + " | ID: " + id;
+            return "-Item Title: " + title + " | ID: " + id;
         }
     }
 }

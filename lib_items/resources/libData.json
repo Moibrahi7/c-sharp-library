@@ -1,0 +1,20 @@
+{
+    "mediaItems":[
+        {
+            "mediaType": "Book",
+            "title": "John's Book",
+            "id": "3e9daf06-797e-42d1-b6dd-a97b7a4e7a4d",
+            "author": "John Book, John Books",
+            "barrower": "",
+            "isCheckedOut": "false",
+            "numberOfPages": 98
+        },
+        {
+            "mediaType": "",
+            "title": "John's New Book",
+            "id": "3224e8fe-5392-4a4c-bb84-8a73e150ce52",
+            "barrower": "d40d72c7-6963-414b-906c-0e2226d24b25",
+            "isCheckedOut": "true"
+        }
+]
+}

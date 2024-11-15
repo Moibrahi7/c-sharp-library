@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 namespace library{
-    class Guest {
+    public class Guest {
         
         protected string name;
         private Guid id;
@@ -31,7 +31,7 @@ namespace library{
                 return email;
             }
         }
-        public  HashSet<MediaItem> CheckedOutBooks{
+        public HashSet<MediaItem> CheckedOutBooks{
             get{
                 return checkedOutBooks;
             }
